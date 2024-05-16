@@ -1,11 +1,15 @@
-﻿namespace Tournament_Organization.Models
+﻿
+using Microsoft.AspNetCore.Identity;
+
+namespace Tournament_Organization.Models
 {
-    public class User
+    public class User : IdentityUser
     {
-        public int Id { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; } = string.Empty;
+        public Guid Id {  get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        //public string Password { get; set; }
+        //public string Email { get; set; }
+        //public string PhoneNumber { get; set; } = string.Empty;
     }
 }
