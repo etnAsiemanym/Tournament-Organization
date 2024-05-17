@@ -13,16 +13,20 @@ namespace Tournament_Organization
             Configuration = configuration;
         }
 
+
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddDbContext<ApplicationContext>(opts =>
                 opts.UseSqlServer(Configuration.GetConnectionString("sqlConnection")));
-            services.AddAutoMapper(typeof(Program));
+            services.AddAutoMapper(typeof(Startup));
 
-            //services.AddIdentity<User, IdentityRole>().AddUserStore<UserConfiguration>();
+            //services.AddTransient<User>();
+            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>();
 
             services.AddControllersWithViews();
         }

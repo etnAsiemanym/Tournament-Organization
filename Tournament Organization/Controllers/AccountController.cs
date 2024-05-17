@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Tournament_Organization.Models;
@@ -26,7 +25,7 @@ namespace Tournament_Organization.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async IActionResult Register(UserRegistrationModel userModel)
+        public async Task<IActionResult> Register(UserRegistrationModel userModel)
         {
             if(!ModelState.IsValid) 
             {
