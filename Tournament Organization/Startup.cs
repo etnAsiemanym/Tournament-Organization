@@ -25,8 +25,15 @@ namespace Tournament_Organization
                 opts.UseSqlServer(Configuration.GetConnectionString("sqlConnection")));
             services.AddAutoMapper(typeof(Startup));
 
-            //services.AddTransient<User>();
-            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>();
+            services.AddTransient<User>();
+            services.AddIdentity<User, IdentityRole>(opt =>
+            {
+                opt.Password.RequiredLength = 7;
+                opt.Password.RequireDigit = false;
+                opt.Password.RequireUppercase = false;
+                opt.User.RequireUniqueEmail = true;
+            })
+                .AddEntityFrameworkStores<ApplicationContext>();
 
             services.AddControllersWithViews();
         }
@@ -49,7 +56,9 @@ namespace Tournament_Organization
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {
