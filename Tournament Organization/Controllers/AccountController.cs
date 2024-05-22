@@ -14,10 +14,11 @@ namespace Tournament_Organization.Controllers
         private readonly IMapper _mapper;
         private readonly UserManager<User> _userManager;
 
-        public AccountController(IMapper mapper, UserManager<User> userManager)
+        public AccountController(IMapper mapper, UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _mapper = mapper;
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         [HttpGet]
@@ -55,7 +56,7 @@ namespace Tournament_Organization.Controllers
                 return View(userModel);
             }
 
-            //await _userManager.AddToRoleAsync(user, "Visitor");
+            await _userManager.AddToRoleAsync(user, "Visitor");
 
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
