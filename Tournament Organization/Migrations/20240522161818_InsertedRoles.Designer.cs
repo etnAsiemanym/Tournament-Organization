@@ -12,8 +12,8 @@ using Tournament_Organization.Models;
 namespace Tournament_Organization.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20240517174113_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20240522161818_InsertedRoles")]
+    partial class InsertedRoles
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,39 @@ namespace Tournament_Organization.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("IdentityRole");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "e078389b-c4a4-4963-b43d-e36edc9a3540",
+                            Name = "Visitor",
+                            NormalizedName = "VISITOR"
+                        },
+                        new
+                        {
+                            Id = "c981a261-0c81-46ba-aea5-48a924b87275",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
+                        });
+                });
 
             modelBuilder.Entity("Tournament_Organization.Models.User", b =>
                 {
@@ -83,34 +116,6 @@ namespace Tournament_Organization.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "b5911064-f882-45d2-8685-cc7f76093588",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "d25b2bea-a4c0-482e-b85f-c8e142a5d158",
-                            EmailConfirmed = false,
-                            FirstName = "Mark",
-                            LastName = "Miens",
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "57fdd18f-5fca-4936-8719-1a8563368c16",
-                            TwoFactorEnabled = false
-                        },
-                        new
-                        {
-                            Id = "97bf2a88-abee-4b0f-b9b5-14669708f12f",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "671a6baf-e81f-4958-8bae-ab4716c5b710",
-                            EmailConfirmed = false,
-                            FirstName = "Anna",
-                            LastName = "Simmons",
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "9cfc1af0-c962-4bd7-9a87-ad927fff05c8",
-                            TwoFactorEnabled = false
-                        });
                 });
 #pragma warning restore 612, 618
         }

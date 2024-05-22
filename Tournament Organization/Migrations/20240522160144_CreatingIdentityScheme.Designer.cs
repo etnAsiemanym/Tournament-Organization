@@ -12,8 +12,8 @@ using Tournament_Organization.Models;
 namespace Tournament_Organization.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20240517191911_InsertedRoles")]
-    partial class InsertedRoles
+    [Migration("20240522160144_CreatingIdentityScheme")]
+    partial class CreatingIdentityScheme
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,13 +46,13 @@ namespace Tournament_Organization.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6494193a-8392-48b2-95b1-7844d79c0fdd",
+                            Id = "56474442-8bcb-41fa-a62b-a492a84cb84f",
                             Name = "Visitor",
                             NormalizedName = "VISITOR"
                         },
                         new
                         {
-                            Id = "fadfaa1e-a03c-4f8c-94f7-2c2af21e0e7d",
+                            Id = "048f04ef-bb16-4f54-954f-55ff45f62758",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -116,34 +116,6 @@ namespace Tournament_Organization.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "8e95fccc-8e7e-4807-a795-d461bef5c3f3",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "a8a4a950-f49d-4ac6-a3e8-2115329e2195",
-                            EmailConfirmed = false,
-                            FirstName = "Mark",
-                            LastName = "Miens",
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "10793546-6983-42c5-8fe3-826fdf696eec",
-                            TwoFactorEnabled = false
-                        },
-                        new
-                        {
-                            Id = "68e90c89-ad89-49f3-b561-7e8af4cc94e7",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "4a409a13-352f-4545-9f5c-b9088b2c3dc9",
-                            EmailConfirmed = false,
-                            FirstName = "Anna",
-                            LastName = "Simmons",
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "57a298c7-c33c-4650-a94f-e74f4d209696",
-                            TwoFactorEnabled = false
-                        });
                 });
 #pragma warning restore 612, 618
         }

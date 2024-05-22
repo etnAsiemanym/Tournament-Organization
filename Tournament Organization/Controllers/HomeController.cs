@@ -24,7 +24,7 @@ namespace Tournament_Organization.Controllers
         [Authorize]
         public async Task<IActionResult> Users()
         {
-            var users = await _context.Users.ToListAsync();
+            var users = await _context.AspNetUsers.ToListAsync();
             return View(users);
         }
 

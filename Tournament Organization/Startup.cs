@@ -12,9 +12,6 @@ namespace Tournament_Organization
         {
             Configuration = configuration;
         }
-
-
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -25,7 +22,7 @@ namespace Tournament_Organization
                 opts.UseSqlServer(Configuration.GetConnectionString("sqlConnection")));
             services.AddAutoMapper(typeof(Startup));
 
-            services.AddTransient<User>();
+            //services.AddTransient<User>();
             services.AddIdentity<User, IdentityRole>(opt =>
             {
                 opt.Password.RequiredLength = 7;

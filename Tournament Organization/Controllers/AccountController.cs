@@ -13,6 +13,7 @@ namespace Tournament_Organization.Controllers
     {
         private readonly IMapper _mapper;
         private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
 
         public AccountController(IMapper mapper, UserManager<User> userManager)
         {
@@ -89,6 +90,16 @@ namespace Tournament_Organization.Controllers
                 return View();
             }
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+
+            return RedirectToAction(nameof(HomeController.Index), "Home");
+        }
+
 
         private IActionResult RedirectToLocal(string returnUrl)
         {
