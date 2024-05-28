@@ -12,17 +12,25 @@ namespace Tournament_Organization
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddDbContext<ApplicationContext>(opts =>
                 opts.UseSqlServer(Configuration.GetConnectionString("sqlConnection")));
-            services.AddAutoMapper(typeof(Program));
+            services.AddAutoMapper(typeof(Startup));
 
-            //services.AddIdentity<User, IdentityRole>().AddUserStore<UserConfiguration>();
+            //services.AddTransient<User>();
+            services.AddIdentity<User, IdentityRole>(opt =>
+            {
+                opt.Password.RequiredLength = 7;
+                opt.Password.RequireDigit = false;
+                opt.Password.RequireUppercase = false;
+                opt.User.RequireUniqueEmail = true;
+            })
+                .AddEntityFrameworkStores<ApplicationContext>();
 
             services.AddControllersWithViews();
         }
@@ -45,7 +53,9 @@ namespace Tournament_Organization
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {

@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Tournament_Organization.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Tournament_Organization.Controllers
 {
@@ -20,9 +21,10 @@ namespace Tournament_Organization.Controllers
             return View();
         }
 
+        [Authorize]
         public async Task<IActionResult> Users()
         {
-            var users = await _context.Users.ToListAsync();
+            var users = await _context.AspNetUsers.ToListAsync();
             return View(users);
         }
 

@@ -1,5 +1,6 @@
 ﻿using Tournament_Organization.Models.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Tournament_Organization.Models
 {
@@ -14,9 +15,9 @@ namespace Tournament_Organization.Models
         {
             base.OnModelCreating(modelBuilder);
             //Database.EnsureCreated();
-            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
         }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<User> AspNetUsers { get; set; }
     }
 }
