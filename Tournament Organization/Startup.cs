@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Builder;
 using Tournament_Organization.Models;
-using Tournament_Organization.Models.Configuration;
 
 namespace Tournament_Organization
 {

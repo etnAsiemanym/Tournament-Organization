@@ -154,10 +154,10 @@ namespace Tournament_Organization.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetRoleClaims_RoleId",
-                table: "AspNetRoleClaims",
-                column: "RoleId");
+                migrationBuilder.CreateIndex(
+                    name: "IX_AspNetRoleClaims_RoleId",
+                    table: "AspNetRoleClaims",
+                    column: "RoleId");
 
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
